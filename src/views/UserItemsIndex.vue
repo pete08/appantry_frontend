@@ -1,5 +1,6 @@
 <template>
-  <div class="home">
+  <!-- Pantry -->
+  <div class="UserItemsIndex">
     <h1>{{ message }}</h1>
   </div>
 </template>
@@ -11,10 +12,12 @@
 export default {
   data: function() {
     return {
-      message: "Welcome to Vue.js!"
+      message: "Welcome to User Items page also known as the Pantry!"
     };
   },
+
   created: function() {},
+  
   methods: {}
 };
 </script>
