@@ -9,6 +9,7 @@
     <p> user name: {{user.name }} </p>
     <p> email: {{user.email}}</p>
     <p> ppl in your house: {{user.ppl_in_house}} </p>
+    
 
   </div>
 </template>

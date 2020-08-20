@@ -2,6 +2,7 @@
   <div class="UserItemsShow">
     <h1>{{ message }}</h1>
     <br>
+    <router-link v-bind:to="`/groceries/4`">See your Grocery list</router-link>
     <hr>
     <div v-for="item in user_items">
     <ul>
@@ -35,6 +36,11 @@ export default {
     });
   },
 
-  methods: {}
+  methods: {
+    
+    addItem: function() {
+
+    }
+  }
 };
 </script>

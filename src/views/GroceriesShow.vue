@@ -2,6 +2,7 @@
   <div class="GroceriesShow">
     <h1>{{ message }}</h1>
     <br>
+    <router-link v-bind:to="`/pantry/4`">See Pantry</router-link>
     <hr>
     <div v-for="item in list">
       <br>
