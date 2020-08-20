@@ -2,6 +2,9 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import UserItemsIndex from '../views/UserItemsIndex.vue';
+import UserShow from '../views/UserShow.vue';
+import UserItemsShow from '../views/UserItemsShow.vue';
+import GroceriesShow from '../views/GroceriesShow.vue';
 
 Vue.use(VueRouter);
 
@@ -18,6 +21,23 @@ const routes = [
     name: 'Home',
     component: Home
   },
+
+  {
+    path: '/user/:id',
+    name: 'UserShow',
+    component: UserShow
+  },
+  {
+    path: '/pantry/:id', //update based on current user logged in
+    name: 'UserItemsShow',
+    component: UserItemsShow
+  },
+  {
+    path: '/groceries/:id', //update based on current user logged in
+    name: 'GroceriesShow',
+    component: GroceriesShow
+  },
+
 
   {
     path: '/about',
