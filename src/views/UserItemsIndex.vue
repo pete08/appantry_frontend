@@ -53,7 +53,7 @@ export default {
       var params = {
         name: this.name,
         item_id: this.item_id,
-      }
+      } ;
       axios.post("/api/user_items", params).then(response=> {
         console.log("made item!") ; 
         console.log("new user_item: ", response) ; 
