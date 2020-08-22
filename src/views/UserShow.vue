@@ -19,6 +19,7 @@
 
 <script>
 import axios from 'axios';
+
 export default {
   
   data: function() {
@@ -26,11 +27,12 @@ export default {
       message: "Welcome",
       user: {} ,
     };
+
   },
   
   created: function() {
-    axios.get("/api/users/1").then(response => { // Create USerShow page based on current user logged in
-      console.log("User 2", response); 
+    axios.get("/api/users/4").then(response => { // Edit UserShow page based on current user logged in
+      console.log("User ", response); 
       this.user = response.data;
     });
   },

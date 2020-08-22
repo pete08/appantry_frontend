@@ -1,8 +1,8 @@
 <template>
-  <div class="GroceriesShow">
+  <div class="Groceries">
     <h1>{{ message }}</h1>
     <br>
-    <router-link v-bind:to="`/pantry/4`">See Pantry</router-link>
+    <router-link v-bind:to="`/pantry`">See Pantry</router-link>
     <hr>
     <div v-for="item in list">
       <br>
@@ -28,7 +28,7 @@ export default {
   },
   
   created: function() {
-    axios.get("/api/groceries/4").then(response=>{ // Create GroceryShow page based on current user logged in
+    axios.get("/api/groceries").then(response=>{ 
       console.log("groceries: ", response) ;
       this.list = response.data ;
     });
