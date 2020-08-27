@@ -4,10 +4,23 @@ import Home from '../views/Home.vue';
 import UserItemsIndex from '../views/UserItemsIndex.vue';
 import UserShow from '../views/UserShow.vue';
 import GroceriesIndex from '../views/GroceriesIndex.vue';
+import Signup from '../views/Signup.vue';
+import Logout from '../views/Logout.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: "/signup",
+    name: "signup",
+    component: Signup,
+  },
+  {
+    path: "/logout",
+    name: "logout",
+    component: Logout,
+  },
+  
   
   {
     path: '/pantry',
