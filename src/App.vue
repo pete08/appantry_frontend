@@ -53,5 +53,5 @@ export default {
       return localStorage.getItem("user_id");
     }
   }
-}
+};
 </script>
