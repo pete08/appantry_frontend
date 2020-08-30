@@ -15,15 +15,26 @@
     </div>
     
     <hr>
+
     <div v-for="item in user_items">
-    <ul>
-      <br>
-      <li> item_name: {{item.item_name}} </li>
-      <li> used: {{item.used}} </li>
-      <li> future_interest: {{item.future_interest}} </li>
+      <p> item_name: {{item.item_name}} </p>
+      <p> used: {{item.used}} 
+          future_interest: {{item.future_interest}} 
+      </p>
+      <button v-on:click="showItem(item)">Edit</button>
       <hr>
-    </ul>
     </div>
+
+    <dialog id="item-edit">
+      <form method="dialog">
+        <p> Name: {{currentItem.item_name}} </p>
+        <button v-on:click="addToGroceryList(currentItem)">Add to Grocery List</button>
+        <button v-on:click="destroy(currentItem)">Delete, Dont buy Again</button>
+        <button>Close</button>
+      </form>
+    </dialog>
+
+
   </div>
 </template>
 
@@ -41,6 +52,7 @@ export default {
       user_items: {} ,
       searchTerm: "",
       all_items: [],
+      currentItem: {},
 
     } ;
   },
@@ -66,14 +78,43 @@ export default {
         console.log("made item!") ; 
         console.log("new user_item: ", response) ; 
         this.user_item = response.data ;
+        this.searchTerm = "";
       }) ;
     },
+
+    showItem: function(item) {
+      this.currentItem = item;
+      document.querySelector("#item-edit").showModal();
+    },
+
     displayItems: function() {
       axios.get("/api/user_items").then(response=> { 
         console.log("user_item : ", response) ;
         this.user_items = response.data ;
       }) ;
     },
+
+    addToGroceryList: function(item) {
+      var params = {
+        used: true,
+        future_interest: true,
+      };
+      axios
+        .put("/api/user_items/" + item.id, params)
+        .then(response => {
+          console.log("User_Item update: ", response);
+          this.currentItem = {};
+        });
+    },
+
+    destroy: function(item) {
+      axios.delete("/api/user_items/" + item.id).then(response=>{
+        console.log("User_item destroyed: ", response);
+        this.currentItem = {};
+      });
+    }
+
+
   }
 };
 </script>
