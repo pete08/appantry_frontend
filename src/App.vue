@@ -15,15 +15,7 @@
           <li><a href="/groceries">Grocery List</a></li>
         </ul>
       </nav>
-      <footer>
-        <ul class="icons">
-          <li><a href="/#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-          <li><a href="/#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-          <li><a href="/#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-          <li><a href="/#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-          <li><a href="//#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-        </ul>
-      </footer>
+
     </section>
 
     <!-- Wrapper -->
@@ -35,12 +27,12 @@
         <!-- One -->
         <section id="one">
           <div class="image main" data-position="center">
-            <img src="images/banner.jpg" alt="" />
+            <img src="/images/banner.jpg" alt="" />
           </div>
           <div class="container">
             <header class="major">
               <h2>Read Only</h2>
-              <p>Just an incredibly simple responsive site<br />
+              <p>An incredibly responsive site<br />
               template freebie by <a href="/http://html5up.net">HTML5 UP</a>.</p>
             </header>
             <p>Faucibus sed lobortis aliquam lorem blandit. Lorem eu nunc metus col. Commodo id in arcu ante lorem ipsum sed accumsan erat praesent faucibus commodo ac mi lacus. Adipiscing mi ac commodo. Vis aliquet tortor ultricies non ante erat nunc integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum.</p>
@@ -119,17 +111,29 @@
     </div>
     
     <router-view/>
-				<!-- Footer -->
-					<section id="footer">
-						<div class="container">
-							<ul class="copyright">
-								<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</section>
-    </div>
+    
+      <!-- Footer -->
 
+      <section id="footer">
+        <!-- <footer> -->
+          <div class="container">
+            <ul class="icons">
+              
+              <li><a href="/#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+              <li><a href="/#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+              <li><a href="/#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+              <li><a href="/#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+              <li><a href="/#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+            </ul>
+
+            <ul class="copyright">
+              <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
+          </div>
+        <!-- </footer> -->
+      </section>
   </div>
+
 </template>
 
 <style>
