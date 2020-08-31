@@ -9,6 +9,7 @@
       </header>
       <nav id="nav">
         <ul>
+          <li><a href="/home" >Home</a></li>
           <li><a href="/logout" class="active">Logout</a></li>
           <li><a href="/user/:id">Profile</a></li>
           <li><a href="/pantry">Pantry</a></li>
@@ -17,15 +18,13 @@
       </nav>
 
     </section>
-
-    <!-- Wrapper -->
     <div id="wrapper">
 
       <!-- Main -->
       <div id="main">
 
         <!-- One -->
-        <section id="one">
+        <!-- <section id="one">
           <div class="image main" data-position="center">
             <img src="/images/banner.jpg" alt="" />
           </div>
@@ -37,10 +36,10 @@
             </header>
             <p>Faucibus sed lobortis aliquam lorem blandit. Lorem eu nunc metus col. Commodo id in arcu ante lorem ipsum sed accumsan erat praesent faucibus commodo ac mi lacus. Adipiscing mi ac commodo. Vis aliquet tortor ultricies non ante erat nunc integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum.</p>
           </div>
-        </section>
+        </section> -->
 
         <!-- Two -->
-        <section id="two">
+        <!-- <section id="two">
           <div class="container">
             <h3>Things I Can Do</h3>
             <p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer lorem ipsum dolor sit amet.</p>
@@ -53,10 +52,10 @@
               <li class="icon solid fa-users">Shadow clone technique</li>
             </ul>
           </div>
-        </section>
+        </section> -->
 
         <!-- Three -->
-        <section id="three">
+        <!-- <section id="three">
           <div class="container">
             <h3>A Few Accomplishments</h3>
             <p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
@@ -84,10 +83,10 @@
               </article>
             </div>
           </div>
-        </section>
+        </section> -->
 
         <!-- Four -->
-        <section id="four">
+        <!-- <section id="four">
           <div class="container">
             <h3>Contact Me</h3>
             <p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
@@ -106,14 +105,12 @@
               </div>
             </form>
           </div>
-        </section>
+        </section> -->
       </div>
     </div>
     
     <router-view/>
     
-      <!-- Footer -->
-
       <section id="footer">
         <!-- <footer> -->
           <div class="container">
