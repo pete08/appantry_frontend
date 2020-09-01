@@ -10,23 +10,34 @@
           <div class="container">
             <h3>{{ message }}</h3>
             <h3>Login Here</h3>
-            <p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
-
-            <form method="post" action="#">
+            <p>Enter your login or select to sign up.</p>
+            <!-- <ul>
+              <li class="text-danger" v-for="error in errors">{{ error }}</li>
+            </ul> -->
+            <form method="submit" v-on:submit.prevent="logIn()">
               <div class="row gtr-uniform">
-                <div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
-                <div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
-                <div class="col-12"><input type="text" name="subject" id="subject" placeholder="Subject" /></div>
-                <div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="6"></textarea></div>
+                <div class="col-6 col-12-xsmall"><input id="email" type="email" name="email" placeholder="Email" /><input type="email" v-model="email"></div>
+                <div class="col-6 col-12-xsmall"><input type="password" name="subject" id="subject" placeholder="Password" /><input type="password" v-model="password"></div>
                 <div class="col-12">
                   <ul class="actions">
-                      <li><input type="submit" class="primary" value="Send Message" /></li>
-                      <li><input type="reset" value="Reset Form" /></li>
+                    <li><input type="submit" class="primary" value="Log In" /></li>
+                    <li><input type="reset" value="Reset Form" /></li>                 
                   </ul>
                 </div>
               </div>
             </form>
-            <router-link to="/signup">Signup</router-link>
+            <h3>Sign Up Here</h3>
+            <form v-on:submit="signUp()">
+              <ul class="actions">
+                <li><input type="submit" value="Sign Up"/></li>
+              </ul>
+            </form>
+            <!-- logout button -->
+            <form method="submit" v-on:submit.prevent="logOut()">
+              <input type="submit"  value="Sign Out">
+            </form> 
+            <!-- logout button: must hide before log in -->
+
           </div>
       </section>
     </div>
@@ -51,7 +62,7 @@
       </form>
     </div>
 
-    <!-- <span v-if="logIn()">
+    <span v-if="logIn()">
       <div class="logout">
         
         <form v-on:submit.prevent="logOut()">
@@ -59,9 +70,9 @@
         </form>
         
       </div>
-    </span> -->
+    </span>
     
-  <!-- </div> -->
+  </div> -->
 </template>
 
 <style>
@@ -100,6 +111,8 @@ export default {
           localStorage.setItem("user_id", response.data.user_id);
           localStorage.setItem("user", response.data.name);
           this.$router.push(`/user/${response.data.user_id}`);
+          this.email = "";
+          this.password = "";
         })
         .catch(error => {
           this.errors = ["Invalid email or password."];
@@ -111,6 +124,9 @@ export default {
       delete axios.defualts.headers.common["Authorization"];
       localStorage.removeItem("jwt");
       this.$router.push("/");
+    },
+    signUp: function() {
+      this.$router.push("/signup");
     },
   }
 };
