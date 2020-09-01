@@ -53,19 +53,33 @@ export default {
       searchTerm: "",
       all_items: [],
       currentItem: {},
+      jwt: localStorage.jwt,
 
     } ;
   },
   
   created: function() {
-    axios.get("/api/user_items").then(response=> { // Create USerITemsShow page based on current user logged in
-      console.log("user_item : ", response) ;
-      this.user_items = response.data ;
-    }) ;
-    axios.get("/api/items").then(response=> {
-      console.log("all_items:", response.ok);
-      this.all_items = response.data ;
-    });
+    var params = {
+      headers: {Authorization: "Bearer " + this.jwt},
+    };
+    console.log("*" * 45) ;
+    console.log("*" * 45) ;
+    console.log(localStorage.jwt) ; 
+    console.log("*" * 45) ;
+    console.log("*" * 45) ;
+    
+    axios
+      .get("/api/user_items", params)
+      .then(response=> { // Create USerITemsShow page based on current user logged in
+        console.log("user_item : ", response) ;
+        this.user_items = response.data ;
+      }) ;
+      
+    axios
+      .get("/api/items").then(response=> {
+        console.log("all_items:", response.ok);
+        this.all_items = response.data ;
+      });
   },
 
   methods: {
