@@ -11,18 +11,19 @@
             <p>This is the page to browse when your shopping and totally forgot you had low-sodium soy sauce.</p>
             <div class="features">
               <!-- <article> -->
-                <!-- <a href="/#" class="image"><img src="images/pic01.jpg" alt="" /></a> -->
-                <div class="outer">
-                  <div>
-                    Add Item Here: <input type="text" v-model="searchTerm" list="names"/>
-                    <button v-on:click="addItem(), displayItems()">Add item!</button>
-                    <datalist id="names">
-                      <option v-for="item in all_items">{{item.name}}</option>
-                    </datalist>
-                  </div>
+              <!-- <a href="/#" class="image"><img src="images/pic01.jpg" alt="" /></a> -->
+              <div class="outer">
+                <div>
+                  Add Item Here: <input type="text" v-model="searchTerm" list="names"/>
+                  <button v-on:click="addItem(), displayItems()">Add item!</button>
+                  <datalist id="names">
+                    <option v-for="item in all_items">{{item.name}}</option>
+                  </datalist>
                 </div>
+              </div>
               <!-- </article> -->
-                <hr>
+              <!-- NOT USED Due to modal DISSAPEARING when selected -->
+                <!-- <hr>
                 <div v-for="item in user_items">
                   <article>
                   <a href="/#" class="image"><img src="images/pic01.jpg" height= "125" alt="" /></a>
@@ -32,15 +33,24 @@
                         <p> 
                         used: {{item.used}} 
                         future_interest: {{item.future_interest}} 
+                        
                         <button v-on:click="showItem(item)">Edit</button>
                         </p>
+                        <form v-on:submit="showItem(item)">
+                          <ul class="actions">
+                            <button v-on:click="addItem(), displayItems()">Add item!</button>
+                            <li><input type="submit" value="Edit"/></li>
+                          </ul>
+                        </form>
+
                       </div>
                   </div>
-
                   </article>
-                </div>
-             
-            </div>
+                </div> -->
+
+                  
+
+
 
 
 
@@ -63,7 +73,7 @@
                 </datalist>
               </div> -->
               
-              <!-- <hr>
+              <hr>
               
               <div v-for="item in user_items">
                 <p> item_name: {{item.item_name}} </p>
@@ -76,12 +86,25 @@
 
               <dialog id="item-edit">
                 <form method="dialog">
-                  <p> Name: {{currentItem.item_name}} </p>
-                  <button v-on:click="addToGroceryList(currentItem)">Add to Grocery List</button>
-                  <button v-on:click="destroy(currentItem)">Delete, Dont buy Again</button>
+
+                  <h4> {{currentItem.item_name}} </h4>
+                  <form v-on:submit="addToGroceryList(currentItem)">
+                    <ul class="actions">
+                      <li><input type="submit" value="Add to Grocery List"/></li>
+                    </ul>
+                  </form>
+                  <form v-on:submit="destroy(currentItem)">
+                    <ul class="actions">
+                      <li><input type="submit" value="Eww!Yuk!    Dont buy That Again"/></li>
+                    </ul>
+                  </form>
+                  <!-- <button v-on:click="addToGroceryList(currentItem)">Add to Grocery List</button>
+                  <button v-on:click="destroy(currentItem)">Delete, Dont buy Again</button> -->
+
                   <button>Close</button>
+
                 </form>
-              </dialog> -->
+              </dialog>
 
             <!-- </div> -->
         
@@ -89,11 +112,13 @@
 
 
       
+            </div>
           </div>
         </section>
       </div>
-    </div> 
+    </div>  
   </div>
+  
 </template>
 
 <style>
@@ -162,6 +187,9 @@ export default {
 
     showItem: function(item) {
       this.currentItem = item;
+      console.log("!" * 50);
+      console.log(item);
+      console.log(document);
       document.querySelector("#item-edit").showModal();
     },
 
@@ -191,7 +219,7 @@ export default {
         .put("/api/user_items/" + item.id, params, config)
         .then(response => {
           console.log("User_Item update: ", response);
-          this.currentItem = {};
+
         });
     },
 

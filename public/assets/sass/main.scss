@@ -788,7 +788,7 @@
 		margin: 0 0 _size(element-margin) 0;
 	}
 
-/* Actions */
+/* Actions *//* TROUBLESHOOTING MAIN.SCSS & MAIN.CSS both have reference to Actions and my modal carries an actions class */
 
 	ul.actions {
 		@include vendor('display', 'flex');
