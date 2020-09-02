@@ -1,44 +1,98 @@
 <template>
-  
+
+  <div id="app">
+    <div id="wrapper">
+      <!-- Main -->
+      <div id="main">
+        <!-- Three -->
+        <section id="three">
+          <div class="container">
+            <h3>Your Pantry!</h3>
+            <p>This is the page to browse when your shopping and totally forgot you had low-sodium soy sauce.</p>
+            <div class="features">
+              <!-- <article> -->
+                <!-- <a href="/#" class="image"><img src="images/pic01.jpg" alt="" /></a> -->
+                <div class="outer">
+                  <div>
+                    Add Item Here: <input type="text" v-model="searchTerm" list="names"/>
+                    <button v-on:click="addItem(), displayItems()">Add item!</button>
+                    <datalist id="names">
+                      <option v-for="item in all_items">{{item.name}}</option>
+                    </datalist>
+                  </div>
+                </div>
+              <!-- </article> -->
+                <hr>
+                <div v-for="item in user_items">
+                  <article>
+                  <a href="/#" class="image"><img src="images/pic01.jpg" height= "125" alt="" /></a>
+                  <div class="inner">
+                      <div class="col-6">
+                        <h4> {{item.item_name}} </h4>
+                        <p> 
+                        used: {{item.used}} 
+                        future_interest: {{item.future_interest}} 
+                        <button v-on:click="showItem(item)">Edit</button>
+                        </p>
+                      </div>
+                  </div>
+
+                  </article>
+                </div>
+             
+            </div>
 
 
 
-  <div class="UserItems">
-    <h1>{{ message }}</h1>
-    <br>
-    <router-link v-bind:to="`/groceries`">See your Grocery list</router-link>
-
-    <h1> new item: </h1>
-
-    <div>
-      Select Item Here: <input type="text" v-model="searchTerm" list="names"/>
-      <button v-on:click="addItem(), displayItems()">Add item!</button>
-      <datalist id="names">
-        <option v-for="item in all_items">{{item.name}}</option>
-      </datalist>
-    </div>
     
-    <hr>
-
-    <div v-for="item in user_items">
-      <p> item_name: {{item.item_name}} </p>
-      <p> used: {{item.used}} 
-          future_interest: {{item.future_interest}} 
-      </p>
-      <button v-on:click="showItem(item)">Edit</button>
-      <hr>
-    </div>
-
-    <dialog id="item-edit">
-      <form method="dialog">
-        <p> Name: {{currentItem.item_name}} </p>
-        <button v-on:click="addToGroceryList(currentItem)">Add to Grocery List</button>
-        <button v-on:click="destroy(currentItem)">Delete, Dont buy Again</button>
-        <button>Close</button>
-      </form>
-    </dialog>
 
 
+
+            <!-- <div class="UserItems"> -->
+              <!-- <h1>{{ message }}</h1>
+              <br>
+              <router-link v-bind:to="`/groceries`">See your Grocery list</router-link>
+
+              <h1> new item: </h1> -->
+
+              <!-- <div>
+                Select Item Here: <input type="text" v-model="searchTerm" list="names"/>
+                <button v-on:click="addItem(), displayItems()">Add item!</button>
+                <datalist id="names">
+                  <option v-for="item in all_items">{{item.name}}</option>
+                </datalist>
+              </div> -->
+              
+              <!-- <hr>
+              
+              <div v-for="item in user_items">
+                <p> item_name: {{item.item_name}} </p>
+                <p> used: {{item.used}} 
+                    future_interest: {{item.future_interest}} 
+                </p>
+                <button v-on:click="showItem(item)">Edit</button>
+                <hr>
+              </div>
+
+              <dialog id="item-edit">
+                <form method="dialog">
+                  <p> Name: {{currentItem.item_name}} </p>
+                  <button v-on:click="addToGroceryList(currentItem)">Add to Grocery List</button>
+                  <button v-on:click="destroy(currentItem)">Delete, Dont buy Again</button>
+                  <button>Close</button>
+                </form>
+              </dialog> -->
+
+            <!-- </div> -->
+        
+      
+
+
+      
+          </div>
+        </section>
+      </div>
+    </div> 
   </div>
 </template>
 
