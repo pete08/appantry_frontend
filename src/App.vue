@@ -10,7 +10,7 @@
       <nav id="nav">
         <ul>
           <li><a href="/home" >Home</a></li>
-          <li><a href="/logout" class="active">Logout</a></li>
+          <li><a href="/logout" >Logout</a></li>
           <li><a href="/user/:id">Profile</a></li>
           <li><a href="/pantry">Pantry</a></li>
           <li><a href="/groceries">Grocery List</a></li>

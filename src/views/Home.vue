@@ -33,7 +33,7 @@
               </ul>
             </form>
             <!-- logout button -->
-            <form method="submit" v-on:submit.prevent="logOut()">
+            <form method="submit" v-on:submit="logOut()">
               <input type="submit"  value="Sign Out">
             </form> 
             <!-- logout button: must hide before log in -->
@@ -121,9 +121,7 @@ export default {
         });
     },
     logOut: function() {
-      delete axios.defualts.headers.common["Authorization"];
-      localStorage.removeItem("jwt");
-      this.$router.push("/");
+      this.$router.push("/logout");
     },
     signUp: function() {
       this.$router.push("/signup");
