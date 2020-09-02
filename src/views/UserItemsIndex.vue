@@ -8,7 +8,7 @@
 
     <div>
       Select Item Here: <input type="text" v-model="searchTerm" list="names"/>
-      <button v-on:click="addItem(); displayItems()">Add item!</button>
+      <button v-on:click="addItem(), displayItems()">Add item!</button>
       <datalist id="names">
         <option v-for="item in all_items">{{item.name}}</option>
       </datalist>
@@ -84,11 +84,17 @@ export default {
 
   methods: {
     
-    addItem: function() {
+    addItem: function() { 
+      // console.log(localStorage.jwt) ; 
       var params = {
         name: this.searchTerm,
       } ;
-      axios.post("/api/user_items", params).then(response=> {
+      var config = {
+        headers: {
+          Authorization: "Bearer " + localStorage.jwt
+        }
+      } ;
+      axios.post("/api/user_items", params, config).then(response=> {
         console.log("made item!") ; 
         console.log("new user_item: ", response) ; 
         this.user_item = response.data ;
@@ -102,7 +108,12 @@ export default {
     },
 
     displayItems: function() {
-      axios.get("/api/user_items").then(response=> { 
+      var config = {
+        headers: {
+          Authorization: "Bearer " + localStorage.jwt
+        }
+      } ;
+      axios.get("/api/user_items", config).then(response=> { 
         console.log("user_item : ", response) ;
         this.user_items = response.data ;
       }) ;
@@ -113,8 +124,13 @@ export default {
         used: true,
         future_interest: true,
       };
+      var config = {
+        headers: {
+          Authorization: "Bearer " + localStorage.jwt
+        }
+      };
       axios
-        .put("/api/user_items/" + item.id, params)
+        .put("/api/user_items/" + item.id, params, config)
         .then(response => {
           console.log("User_Item update: ", response);
           this.currentItem = {};
@@ -122,7 +138,12 @@ export default {
     },
 
     destroy: function(item) {
-      axios.delete("/api/user_items/" + item.id).then(response=>{
+      var config = {
+        headers: {
+          Authorization: "Bearer " + localStorage.jwt
+        }
+      };
+      axios.delete("/api/user_items/" + item.id, config).then(response=>{
         console.log("User_item destroyed: ", response);
         this.currentItem = {};
       });

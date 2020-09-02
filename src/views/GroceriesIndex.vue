@@ -8,7 +8,7 @@
 
     <div>
       Select Item Here: <input type="text" v-model="searchTerm" list="names"/>
-      <button v-on:click="addItem(); displayItems()">Add item!</button>
+      <button v-on:click="addItem()">Add item to Grocery List!</button>
       <datalist id="names">
         <option v-for="item in all_items">{{item.name}}</option>
       </datalist>
@@ -27,7 +27,7 @@
     <dialog id="item-edit">
       <form method="dialog">
         <p> Name: {{currentItem.item_name}} </p>
-        <button v-on:click="addToPantry(currentItem)">Add to Pantry!</button>
+        <button v-on:click="addToPantry(currentItem)">Got it! Add it to the Pantry!</button>
         <button>Close</button>
       </form>
     </dialog>
@@ -48,11 +48,15 @@ export default {
       currentItem: {},
       searchTerm: "",
       all_items: [],
+      jwt: localStorage.jwt,
     };
   },
   
   created: function() {
-    axios.get("/api/groceries").then(response=>{ 
+    var params = {
+      headers: {Authorization: "Bearer " + this.jwt},
+    };
+    axios.get("/api/groceries", params).then(response=>{ 
       console.log("groceries: ", response) ;
       this.list = response.data ;
     });
@@ -68,7 +72,10 @@ export default {
       var params = {
         name: this.searchTerm,
       } ;
-      axios.post("/api/groceries", params).then(response=> {
+      var config = {
+        headers: {Authorization: "Bearer " + this.jwt},
+      } ;
+      axios.post("/api/groceries", params, config).then(response=> {
         console.log("made item!") ; 
         console.log("new user_item: ", response) ; 
         this.user_item = response.data ;
@@ -77,7 +84,13 @@ export default {
     },
 
     displayItems: function() {
-      axios.get("/api/groceries").then(response=>{ 
+      var params = {
+        name: this.searchTerm,
+      } ;
+      var config = {
+        headers: {Authorization: "Bearer " + this.jwt},
+      } ;
+      axios.get("/api/groceries", params, config).then(response=>{ 
         console.log("groceries: ", response) ;
         this.list = response.data ;
       });
@@ -86,6 +99,7 @@ export default {
     groceryItem: function(item) {
       this.currentItem = item;
       document.querySelector("#item-edit").showModal();
+
     },
 
 
@@ -94,12 +108,14 @@ export default {
         used: false,
         future_interest: true,
       };
-      axios
-        .put("/api/groceries/" + item.id, params)
-        .then(response => {
-          console.log("User_Item update: ", response);
-          this.currentItem = {};
-        });
+      var config = {
+        headers: {Authorization: "Bearer " + this.jwt},
+      } ;
+      axios.put("/api/groceries/" + item.id, params, config).then(response => {
+        console.log("User_Item update: ", response);
+        this.currentItem = {};
+        item = "";
+      });
     },
   }
 };
