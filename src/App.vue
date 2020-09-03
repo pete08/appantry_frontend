@@ -1,23 +1,47 @@
 <template>
   <div id="app">
-      <section id="header">
+    <section id="header">
       <header>
         <span class="image avatar"><img src="images/avatar.jpg" alt="" /></span>
-        <h1 id="logo"><a href="/#">Willis Corto</a></h1>
-        <p>I got reprogrammed by a rogue AI<br />
-        and now I'm totally cray</p>
+        <h1 id="logo">
+          
+          <a href="/user/:id"></a>
+        </h1>
+          <!-- <p v-if="loggedIn() === true"></p> -->
+          <!-- <p v-else>    -->
+          <p>
+          An app to track your foods
+          </p>
       </header>
       <nav id="nav">
         <ul>
           <li><a href="/home" >Home</a></li>
-          <li><a href="/logout" >Logout</a></li>
+          <!-- <li><a href="/logout" >Logout</a></li> -->
           <li><a href="/user/:id">Profile</a></li>
           <li><a href="/pantry">Pantry</a></li>
           <li><a href="/groceries">Grocery List</a></li>
         </ul>
       </nav>
 
+
+
     </section>
+
+
+<!--  USE AS TEMPLATE FOR VARIOUS SECTIONS _______________________-->
+<!-- <template> -->
+  <!-- <div id="app">
+    <div id="wrapper">
+      <div id="main">
+        
+      </div>
+    </div>
+  </div> -->
+<!-- </template>-->
+<!--  USE AS TEMPLATE FOR VARIOUS SECTIONS ^^^^^^^^^^^^^^^^^^^^^^^-->
+
+
+
     <div id="wrapper">
 
       <!-- Main -->
@@ -26,7 +50,7 @@
         <!-- One -->
         <!-- <section id="one">
           <div class="image main" data-position="center">
-            <img src="/images/banner.jpg" alt="" />
+            <img src="/images/pantry_organized.png" alt="" />
           </div>
           <div class="container">
             <header class="major">

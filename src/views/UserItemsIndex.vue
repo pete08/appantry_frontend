@@ -76,7 +76,7 @@
               <hr>
               
               <div v-for="item in user_items">
-                <p> item_name: {{item.item_name}} </p>
+                <h4> {{item.item_name}} </h4> 
                 <p> used: {{item.used}} 
                     future_interest: {{item.future_interest}} 
                 </p>

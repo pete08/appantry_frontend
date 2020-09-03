@@ -1,39 +1,95 @@
 <template>
-  <div class="Groceries">
-    <h1>{{ message }}</h1>
-    <br>
-    <router-link v-bind:to="`/pantry`">See Pantry</router-link>
 
-    <h1> new item: </h1>
+  <div id="app">
+    <div id="wrapper">
+      <!-- Main -->
+      <div id="main">
+        <!-- Three -->
+        <section id="three">
+          <div class="container">
+            <h3>Your Grocery List!</h3>
+            <p>This is the page to remind what you need.</p>
+            <div class="features">
 
-    <div>
-      Select Item Here: <input type="text" v-model="searchTerm" list="names"/>
-      <button v-on:click="addItem()">Add item to Grocery List!</button>
-      <datalist id="names">
-        <option v-for="item in all_items">{{item.name}}</option>
-      </datalist>
-    </div>
+              <div class="outer">
+                <div>
+                  Add Item Here: <input type="text" v-model="searchTerm" list="names"/>
+                  <button v-on:click="addItem(), displayItems()">Add to Grocery List!</button>
+                  <datalist id="names">
+                    <option v-for="item in all_items">{{item.name}}</option>
+                  </datalist>
+                </div>
+              </div>
+              <hr>
+              
+              <div v-for="item in list">
+                <h4> {{item.item_name}} </h4> 
+                <p> used: {{item.used}} 
+                    future_interest: {{item.future_interest}} 
+                </p>
+                <button v-on:click="groceryItem(item)">Edit</button>
+                <hr>
+              </div>
+              <dialog id="item-edit">
+                <form method="dialog">
 
-    <hr>
-    <div v-for="item in list">
-      <br>
-      <p> item_name: {{item.item_name}} </p>
-      <p> used: {{item.used}} </p>
-      <p> future_interest: {{item.future_interest}} </p>
-      <button v-on:click="groceryItem(item)">Edit</button>
-      <hr>
-    </div>
+                  <h4> {{currentItem.item_name}} </h4>
+                  <form v-on:submit="addToPantry(currentItem)">
+                    <ul class="actions">
+                      <li><input type="submit" value="Got it! Add to Pantry"/></li>
+                    </ul>
+                  </form>
+                  <button>Close</button>
 
-    <dialog id="item-edit">
-      <form method="dialog">
-        <p> Name: {{currentItem.item_name}} </p>
-        <button v-on:click="addToPantry(currentItem)">Got it! Add it to the Pantry!</button>
-        <button>Close</button>
-      </form>
-    </dialog>
-
+                </form>
+              </dialog>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>  
   </div>
+  
+
+
+              <!-- <template>
+                <div class="Groceries">
+                  <h1>{{ message }}</h1>
+                  <br>
+                  <router-link v-bind:to="`/pantry`">See Pantry</router-link>
+
+                  <h1> new item: </h1>
+
+                  <div>
+                    Select Item Here: <input type="text" v-model="searchTerm" list="names"/>
+                    <button v-on:click="addItem()">Add item to Grocery List!</button>
+                    <datalist id="names">
+                      <option v-for="item in all_items">{{item.name}}</option>
+                    </datalist>
+                  </div>
+
+                  <hr>
+                  <div v-for="item in list">
+                    <br>
+                    <p> item_name: {{item.item_name}} </p>
+                    <p> used: {{item.used}} </p>
+                    <p> future_interest: {{item.future_interest}} </p>
+                    <button v-on:click="groceryItem(item)">Edit</button>
+                    <hr>
+                  </div>
+
+                  <dialog id="item-edit">
+                    <form method="dialog">
+                      <p> Name: {{currentItem.item_name}} </p>
+                      <button v-on:click="addToPantry(currentItem)">Got it! Add it to the Pantry!</button>
+                      <button>Close</button>
+                    </form>
+                  </dialog>
+
+                </div>
+              </template> -->
 </template>
+
 
 <style>
 </style>

@@ -16,8 +16,10 @@
             </ul> -->
             <form method="submit" v-on:submit.prevent="logIn()">
               <div class="row gtr-uniform">
-                <div class="col-6 col-12-xsmall"><input id="email" type="email" name="email" placeholder="Email" /><input type="email" v-model="email"></div>
-                <div class="col-6 col-12-xsmall"><input type="password" name="subject" id="subject" placeholder="Password" /><input type="password" v-model="password"></div>
+                <div class="col-6 col-12-xsmall"><input type="email" v-model="email" placeholder="Email"></div>
+                <!-- <input id="email" type="email" name="email" placeholder="Email" /> -->
+                <div class="col-6 col-12-xsmall"><input type="password" v-model="password" placeholder="Password"></div>
+                <!-- <input type="password" name="subject" id="subject" placeholder="Password" /> -->
                 <div class="col-12">
                   <ul class="actions">
                     <li><input type="submit" class="primary" value="Log In" /></li>
@@ -34,7 +36,7 @@
             </form>
             <!-- logout button -->
             <form method="submit" v-on:submit="logOut()">
-              <input type="submit"  value="Sign Out">
+              <input type="submit" value="Sign Out">
             </form> 
             <!-- logout button: must hide before log in -->
 

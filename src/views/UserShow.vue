@@ -1,17 +1,29 @@
 <template>
-  <div class="usershow">
-    <h1>{{ message }}</h1>
-    <br>
-    <hr>
-    <br>
-    <h1> {{user.name }}  </h1>
-    <p> user id: {{user.id }} </p>
-    <p> user name: {{user.name }} </p>
-    <p> email: {{user.email}}</p>
-    <p> ppl in your house: {{user.ppl_in_house}} </p>
-    
-
+  <div id="app">
+    <div id="wrapper">
+      <div id="main">
+      <section id="one">
+        <div class="image main" data-position="center">
+          <img src="/images/pantry_organized.png" alt="" />
+        </div>
+      </section>
+        <section id="two">
+          <div class="container">
+            <h1>{{ message }}! </h1> <h2> {{user.name }} </h2>
+            <hr>
+            <h1>  </h1>
+            <p> user id: {{user.id }} </p>
+            <!-- <p> user name: {{user.name }} </p> -->
+            <p> email: {{user.email}}</p>
+            <!-- <p> people in your household: {{user.ppl_in_house}} </p> -->
+          </div>
+        </section>
+        
+      </div>
+    </div>
   </div>
+
+
 </template>
 
 <style>
