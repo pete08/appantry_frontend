@@ -20,6 +20,7 @@
           <li><a href="/user/:id">Profile</a></li>
           <li><a href="/pantry">Pantry</a></li>
           <li><a href="/groceries">Grocery List</a></li>
+          <li><a href="/recipes">Recipe Ideas</a></li>
         </ul>
       </nav>
 

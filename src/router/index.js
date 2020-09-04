@@ -6,15 +6,23 @@ import UserShow from '../views/UserShow.vue';
 import GroceriesIndex from '../views/GroceriesIndex.vue';
 import Signup from '../views/Signup.vue';
 import Logout from '../views/Logout.vue';
+import Recipes from '../views/Recipes.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
+    path: "/recipes",
+    name: "recipes",
+    component: Recipes,
+  },
+
+  {
     path: "/signup",
     name: "signup",
     component: Signup,
   },
+  
   {
     path: "/logout",
     name: "logout",
@@ -46,7 +54,7 @@ const routes = [
   },
 
   {
-    path: '/groceries', //update based on current user logged in
+    path: '/groceries', 
     name: 'GroceriesIndex',
     component: GroceriesIndex
   },

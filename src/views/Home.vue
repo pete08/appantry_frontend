@@ -28,10 +28,11 @@
                 </div>
               </div>
             </form>
-            <h3>Sign Up Here</h3>
+            <!-- <h3>Sign Up Here</h3> -->
+            <hr>
             <form v-on:submit="signUp()">
               <ul class="actions">
-                <li><input type="submit" value="Sign Up"/></li>
+                <li><input type="submit" class="primary" value="Sign Up Here"/></li>
               </ul>
             </form>
             <!-- logout button -->
