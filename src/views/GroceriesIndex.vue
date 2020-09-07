@@ -9,9 +9,8 @@
           <div class="container">
             <h3>Your Grocery List!</h3>
             <p>This is the page to remind what you need.</p>
-            <div class="features">
 
-              <div class="outer">
+              <!-- <div class="outer"> -->
                 <div>
                   Add Item Here: <input type="text" v-model="searchTerm" list="names"/>
                   <button v-on:click="addItem()">Add to Grocery List!</button>
@@ -19,17 +18,27 @@
                     <option v-for="item in all_items">{{item.name}}</option>
                   </datalist>
                 </div>
-              </div>
+              <!-- </div> -->
               <hr>
+            <div class="features">
               
-              <div v-for="item in list">
-                <h4> {{item.item_name}} </h4> 
-                <p> used: {{item.used}} 
-                    future_interest: {{item.future_interest}} 
-                </p>
-                <button v-on:click="groceryItem(item)">Edit</button>
-                <hr>
-              </div>
+                  <div v-for="item in list">
+                    <article>
+
+                        <h4> {{item.item_name}} </h4> 
+                        
+                        <div class="inner">
+                          used: {{item.used}} 
+                          future_interest: {{item.future_interest}} 
+                          <button v-on:click="groceryItem(item)">Edit</button>
+                          
+                        </div>
+
+                    </article>
+                        <hr>
+                  </div>
+              
+              
               <dialog id="item-edit">
                 <form method="dialog">
 

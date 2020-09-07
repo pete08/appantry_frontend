@@ -33,11 +33,13 @@
                 <img class="image" v-bind:src="recipe.image" alt="" height="200px" /> 
                   <div class="inner">
                     <h4>{{recipe.title}} </h4>
-                    <p> <b> Items not in your Pantry:</b> </p>
+                    <p> <b> Add items you'll need to Grocery List: </b> </p>
                     <ul>
-                      <li v-for="subItem in recipe.need" @click="addItemGrocery(subItem)">
-                        {{subItem}}
-                      </li>
+                      <div v-for="subItem in recipe.need">
+                        <li>{{subItem}}
+                        <button @click="addItemGrocery(subItem)"> + </button>
+                        </li>
+                      </div>
                     </ul>
                   </div>
                 </article>
@@ -105,6 +107,8 @@ export default {
       all_items: [],
       jwt: localStorage.jwt,
       recipes: [],
+      // recipe: {},
+      // subItem: ""
     };
   },
   
@@ -148,14 +152,10 @@ export default {
         console.log("new user_item: ", response) ; 
         console.log("response.data: ") ;
         console.log(response.data) ;
-        
-        // this.recipesList();
+
       }) ;
     },
 
-    toggleSubItem: function(subItem) {
-      
-    }
     
   }
 };

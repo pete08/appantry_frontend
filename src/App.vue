@@ -2,7 +2,10 @@
   <div id="app">
     <section id="header">
       <header>
-        <span class="image avatar"><img src="images/avatar.jpg" alt="" /></span>
+        <span class="image avatar">
+          <img src="images/hat.jpg" alt="" />
+        </span>
+        
         <h1 id="logo">
           
           <a href="/user/:id"></a>

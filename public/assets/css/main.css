@@ -130,7 +130,7 @@ input, select, textarea {
 	}
 
 	p {
-		margin: 0 0 .75em 0;
+		margin: 0 0 0.5em 0;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -186,7 +186,7 @@ input, select, textarea {
 	hr {
 		border: 0;
 		border-bottom: solid 2px #f4f4f4;
-		margin: 2.25em 0;
+		margin: 0.5em 0;
 	}
 
 		hr.major {
@@ -2653,8 +2653,8 @@ input, select, textarea {
 /* Features */
 
 	.features article {
-		border-top: solid 3px #f4f4f4;
-		margin-bottom: 2.25em;
+		border-top: solid 1px #f4f4f4;
+		margin-bottom: 0.5em;
 		padding-top: 2.25em;
 	}
 
