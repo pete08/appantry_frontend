@@ -75,7 +75,7 @@
               
               <hr>
               
-              <div v-for="item in user_items">
+              <div v-for="item in orderBy(user_items)">
                 <h4> {{item.item_name}} </h4> 
                 <p> used: {{item.used}} 
                     future_interest: {{item.future_interest}} 

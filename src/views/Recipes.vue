@@ -34,13 +34,15 @@
                   <div class="inner">
                     <h4>{{recipe.title}} </h4>
                     <p> <b> Items not in your Pantry:</b> </p>
-                    <div v-for="subItem in recipe.need">
-                      <p> - {{subItem}} &nbsp; <button v-on:click="groceryItem(subItem)"> + grocery list</button></p>
-                    </div>
+                    <ul>
+                      <li v-for="subItem in recipe.need" @click="addItemGrocery(subItem)">
+                        {{subItem}}
+                      </li>
+                    </ul>
                   </div>
                 </article>
-                <div v-for="subItem in recipe.steps">
-                  <p> - {{subItem}} </p>
+                <div v-for="singleStep in recipe.steps">
+                  <p> - {{singleStep}} </p>
                 </div>
 
                 <hr>
@@ -48,18 +50,20 @@
 
 
 
-              <div v-for="item in list">
+              <!-- <div v-for="item in list">
                 <h4> Recipe for: <b> {{item.item_name}} </b> </h4> 
                 <p> used: {{item.used}} 
                     future_interest: {{item.future_interest}} 
                 </p>
                 <button v-on:click="groceryItem(item)">Edit</button>
                 <hr>
-              </div>
-              <dialog id="item-edit">
+              </div> -->
+
+
+              <!-- <dialog id="item-edit">
                 <form method="dialog">
 
-                  <h4> <b> {{currentItem.item_name}} </b> </h4>
+                  <h4> <b> {{currentItem}} </b> </h4>
                   <form v-on:submit="addToGroceryList(currentItem)">
                     <ul class="actions">
                       <li><input type="submit" value="Add to Grocery List"/></li>
@@ -73,7 +77,7 @@
                   <button>Close</button>
 
                 </form>
-              </dialog>
+              </dialog> -->
             </div>
           </div>
         </section>
@@ -96,6 +100,8 @@ export default {
       list: {} ,
       currentItem: {},
       searchTerm: "",
+      // someItem: "garbonzo beans",
+      singleStep: "",
       all_items: [],
       jwt: localStorage.jwt,
       recipes: [],
@@ -103,14 +109,7 @@ export default {
   },
   
   created: function() {
-    // var params = {
-    //   headers: {Authorization: "Bearer " + this.jwt},
-    // };
-    // axios.get("/api/groceries", params).then(response=>{ 
-    //   console.log("groceries: ", response) ;
-    //   this.list = response.data ;
-    // });
-    // ^^^ for grocery items list
+
     axios.get("/api/items").then(response=> {
       console.log("all_items:", response.ok);
       this.all_items = response.data ;
@@ -119,20 +118,12 @@ export default {
 
   methods: {
 
-    addItem: function() {
-      var params = {
-        name: this.searchTerm,
-      } ;
-      var config = {
-        headers: {Authorization: "Bearer " + this.jwt},
-      } ;
-      axios.post("/api/groceries", params, config).then(response=> {
-        console.log("you added to groceries list! :") ; 
-        console.log("new user_item: ", response) ; 
-        this.user_item = response.data ;
-        this.searchTerm = "";
-      }) ;
+    reversesubItem: function() {
+      this.subItem = this.subItem.split("").reverse().join("");
+      console.log("this.subItem : ") ;
+      console.log(this.subItem) ;
     },
+
     recipesList: function() {
       var config = {
         headers: {Authorization: "Bearer " + this.jwt},
@@ -145,60 +136,26 @@ export default {
       }) ;
     },
 
-    displayItems: function() {
+    addItemGrocery: function(subItem) {
       var params = {
-        name: this.searchTerm,
+        name: subItem,
       } ;
       var config = {
         headers: {Authorization: "Bearer " + this.jwt},
       } ;
-      axios.get("/api/groceries", params, config).then(response=>{ 
-        console.log("groceries: ", response) ;
-        this.list = response.data ;
-      });
+      axios.post("/api/groceries", params, config).then(response=> {
+        console.log("made item!") ; 
+        console.log("new user_item: ", response) ; 
+        console.log("response.data: ") ;
+        console.log(response.data) ;
+        
+        // this.recipesList();
+      }) ;
     },
 
-    groceryItem: function(item) {
-      this.currentItem = item;
-      document.querySelector("#item-edit").showModal();
-
-    },
-
-
-    addToPantry: function(item) {
-      var params = {
-        used: false,
-        future_interest: true,
-      };
-      var config = {
-        headers: {Authorization: "Bearer " + this.jwt},
-      } ;
-      axios.put("/api/groceries/" + item.id, params, config).then(response => {
-        console.log("User_Item update: ", response);
-        // this.currentItem = {};
-        // item = "";
-      });
-    },
-
-    addToGroceryList: function(item) {
-      var params = {
-        used: true,
-        future_interest: true,
-      };
-      var config = {
-        headers: {
-          Authorization: "Bearer " + localStorage.jwt
-        }
-      };
-      axios
-        .put("/api/user_items/" + item.id, params, config)
-        .then(response => {
-          console.log("User_Item update: ", response);
-          // this.currentItem = {};
-          // item = "";
-        });
-    },
-
+    toggleSubItem: function(subItem) {
+      
+    }
     
   }
 };

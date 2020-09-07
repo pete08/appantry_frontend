@@ -14,7 +14,7 @@
               <div class="outer">
                 <div>
                   Add Item Here: <input type="text" v-model="searchTerm" list="names"/>
-                  <button v-on:click="addItem(), displayItems()">Add to Grocery List!</button>
+                  <button v-on:click="addItem()">Add to Grocery List!</button>
                   <datalist id="names">
                     <option v-for="item in all_items">{{item.name}}</option>
                   </datalist>
@@ -100,7 +100,7 @@ export default {
   data: function() {
     return {
       message: "Welcome to your Grocery List!",
-      list: {} ,
+      list: [] ,
       currentItem: {},
       searchTerm: "",
       all_items: [],
@@ -121,6 +121,7 @@ export default {
       this.all_items = response.data ;
     });
   },
+
 
   methods: {
 
