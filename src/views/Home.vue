@@ -36,9 +36,9 @@
               </ul>
             </form>
             <!-- logout button -->
-            <form method="submit" v-on:submit="logOut()">
+            <!-- <form method="submit" v-on:submit="logOut()">
               <input type="submit" value="Sign Out">
-            </form> 
+            </form>  -->
             <!-- logout button: must hide before log in -->
 
           </div>
@@ -123,9 +123,9 @@ export default {
           this.password = "";
         });
     },
-    logOut: function() {
-      this.$router.push("/logout");
-    },
+    // logOut: function() {
+    //   this.$router.push("/logout");
+    // },
     signUp: function() {
       this.$router.push("/signup");
     },

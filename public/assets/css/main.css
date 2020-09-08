@@ -2504,6 +2504,24 @@ input, select, textarea {
 				border-top: 0;
 			}
 
+/* PETE ADDED: Button class outside input tag */
+	.button {
+
+		background-color: #5ed0b1; /* Green */
+		border-radius: 5px;
+		border: 0;
+		color: #ffffff !important;
+		cursor: pointer;
+		display: inline-block;
+		font-weight: 700;
+		height: 2.75em;
+		line-height: 2.75em;
+		padding: 0 1.5em;
+		text-align: center;
+		text-decoration: none;
+		white-space: nowrap;
+	}
+
 /* Button */
 
 	input[type="submit"],

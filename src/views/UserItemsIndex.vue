@@ -13,12 +13,18 @@
               <!-- <article> -->
               <!-- <a href="/#" class="image"><img src="images/pic01.jpg" alt="" /></a> -->
               <div class="outer">
-                <div>
-                  Add Item Here: <input type="text" v-model="searchTerm" list="names"/>
-                  <button v-on:click="addItem(), displayItems()">Add item!</button>
-                  <datalist id="names">
-                    <option v-for="item in all_items">{{item.name}}</option>
-                  </datalist>
+                <div class="row aln-bottom">
+                  <div class="col-8">
+                    Add Item Here: <input type="text" v-model="searchTerm" list="names"/>
+                  </div>
+                  <div class="col-4">
+                    <!-- <div class="button"> -->
+                      <button v-on:click="addItem(), displayItems()">Add item!</button>
+                      <datalist id="names">
+                        <option v-for="item in all_items">{{item.name}}</option>
+                      </datalist>
+                    <!-- </div> -->
+                  </div>
                 </div>
               </div>
               <!-- </article> -->
@@ -48,16 +54,6 @@
                   </article>
                 </div> -->
 
-                  
-
-
-
-
-
-    
-
-
-
             <!-- <div class="UserItems"> -->
               <!-- <h1>{{ message }}</h1>
               <br>
@@ -72,15 +68,21 @@
                   <option v-for="item in all_items">{{item.name}}</option>
                 </datalist>
               </div> -->
-              
-              <hr>
-              
+
+              <br>
               <div v-for="item in orderBy(user_items)">
-                <h4> {{item.item_name}} </h4> 
-                <p> used: {{item.used}} 
-                    future_interest: {{item.future_interest}} 
-                </p>
-                <button v-on:click="showItem(item)">Edit</button>
+                <div class="row">
+                  <div class="col-4">
+                      <h4> {{item.item_name}} </h4> 
+                  </div>
+                  <div class="col-8">
+                      <p> 
+                        <button v-on:click="showItem(item)">Edit</button>
+                        <!-- used: {{item.used}}  -->
+                        <!-- future_interest: {{item.future_interest}}  -->
+                      </p>
+                  </div>          
+                </div>
                 <hr>
               </div>
 

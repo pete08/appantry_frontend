@@ -8,33 +8,41 @@
         <section id="three">
           <div class="container">
             <h3>Your Grocery List!</h3>
-            <p>This is the page to remind what you need.</p>
+            <p>This page reminds you of all the obscure items you'll forget about!</p>
 
               <!-- <div class="outer"> -->
-                <div>
+              <div class="row aln-bottom">
+                <div class="col-8">
+
                   Add Item Here: <input type="text" v-model="searchTerm" list="names"/>
-                  <button v-on:click="addItem()">Add to Grocery List!</button>
-                  <datalist id="names">
-                    <option v-for="item in all_items">{{item.name}}</option>
-                  </datalist>
+
                 </div>
+                <div class="col-4">
+                        <button v-on:click="addItem()">Add to Grocery List!</button>
+                        <datalist id="names">
+                          <option v-for="item in all_items">{{item.name}}</option>
+                        </datalist>
+                </div>
+              </div>
               <!-- </div> -->
+              <br>
               <hr>
             <div class="features">
               
                   <div v-for="item in list">
-                    <article>
-
+                    <div class="row">
+                    <!-- <article> -->
+                      <div class="col-4">
                         <h4> {{item.item_name}} </h4> 
-                        
-                        <div class="inner">
-                          used: {{item.used}} 
-                          future_interest: {{item.future_interest}} 
+                      </div>
+                      <div class="col-8">
+                          <!-- used: {{item.used}} 
+                          future_interest: {{item.future_interest}}  -->
                           <button v-on:click="groceryItem(item)">Edit</button>
-                          
-                        </div>
+                      </div>
+                    </div>
 
-                    </article>
+                    <!-- </article> -->
                         <hr>
                   </div>
               
