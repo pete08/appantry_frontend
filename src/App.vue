@@ -142,17 +142,17 @@
       <section id="footer">
         <!-- <footer> -->
           <div class="container">
-            <ul class="icons">
+            <!-- <ul class="icons">
               
               <li><a href="/#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
               <li><a href="/#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
               <li><a href="/#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
               <li><a href="/#" class="icon brands fa-github"><span class="label">Github</span></a></li>
               <li><a href="/#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-            </ul>
+            </ul> -->
 
             <ul class="copyright">
-              <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+              <li>&copy; Pete Hackley 2020. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
             </ul>
           </div>
         <!-- </footer> -->

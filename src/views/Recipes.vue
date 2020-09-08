@@ -7,19 +7,24 @@
         <!-- Three -->
         <section id="three">
           <div class="container">
-            <h3>Check out Recipes</h3>
+            <h3>Recipe Roullette</h3>
             <p>Your destination to look up popular recipes based on your current pantry. &nbsp; &nbsp; Feel free to add items to your grocery list if your recipe has ingredients not in your pantry!</p>
+            <br>
+            <p> Click below for 3 randomly geenrated recipes </p>
+
+            <hr>
+            <br>
             <div class="features">
 
               <div class="outer">
-                <div>
+                <!-- <div>
                   Add Item Here: <input type="text" v-model="searchTerm" list="names"/>
                   <button v-on:click="addItem(), displayItems()">Add to Grocery List!</button>
                   <datalist id="names">
                     <option v-for="item in all_items">{{item.name}}</option>
                   </datalist>
                 </div>
-              <hr>
+              <hr> -->
 
                 <div>
                   <button v-on:click="recipesList()">Recipes Ideas!</button>
@@ -33,6 +38,7 @@
                 <img class="image" v-bind:src="recipe.image" alt="" height="200px" /> 
                   <div class="inner">
                     <h4>{{recipe.title}} </h4>
+                    <h4>{{recipe.source_url}} </h4>
                     <p> <b> Add items you'll need to Grocery List: </b> </p>
                     <ul>
                       <div v-for="subItem in recipe.need">
