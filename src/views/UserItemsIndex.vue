@@ -19,7 +19,7 @@
                   </div>
                   <div class="col-4">
                     <!-- <div class="button"> -->
-                      <button v-on:click="addItem(), displayItems()">Add item!</button>
+                      <button v-on:click="addItem()">Add item!</button>
                       <datalist id="names">
                         <option v-for="item in all_items">{{item.name}}</option>
                       </datalist>
@@ -185,6 +185,7 @@ export default {
         this.user_item = response.data ;
         this.searchTerm = "";
       }) ;
+      this.displayItems();
     },
 
     showItem: function(item) {

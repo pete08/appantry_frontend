@@ -11,25 +11,11 @@
             <p>Your destination to look up popular recipes based on your current pantry. &nbsp; &nbsp; Feel free to add items to your grocery list if your recipe has ingredients not in your pantry!</p>
             <br>
             <p> Click below for 3 randomly geenrated recipes </p>
-
-            <hr>
-            <br>
             <div class="features">
-
               <div class="outer">
-                <!-- <div>
-                  Add Item Here: <input type="text" v-model="searchTerm" list="names"/>
-                  <button v-on:click="addItem(), displayItems()">Add to Grocery List!</button>
-                  <datalist id="names">
-                    <option v-for="item in all_items">{{item.name}}</option>
-                  </datalist>
-                </div>
-              <hr> -->
-
                 <div>
                   <button v-on:click="recipesList()">Recipes Ideas!</button>
                 </div>
-
               </div>
               <hr>
               

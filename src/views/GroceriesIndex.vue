@@ -28,23 +28,22 @@
               <br>
               <hr>
             <div class="features">
-              
-                  <div v-for="item in list">
-                    <div class="row">
-                    <!-- <article> -->
-                      <div class="col-4">
-                        <h4> {{item.item_name}} </h4> 
-                      </div>
-                      <div class="col-8">
-                          <!-- used: {{item.used}} 
-                          future_interest: {{item.future_interest}}  -->
-                          <button v-on:click="groceryItem(item)">Edit</button>
-                      </div>
-                    </div>
-
-                    <!-- </article> -->
-                        <hr>
+              <div v-for="item in list">
+                <div class="row">
+                <!-- <article> -->
+                  <div class="col-4">
+                    <h4> {{item.item_name}} </h4> 
                   </div>
+                  <div class="col-8">
+                      <!-- used: {{item.used}} 
+                      future_interest: {{item.future_interest}}  -->
+                      <button v-on:click="groceryItem(item)">Edit</button>
+                  </div>
+                </div>
+
+                <!-- </article> -->
+                    <hr>
+              </div>
               
               
               <dialog id="item-edit">
@@ -67,44 +66,6 @@
     </div>  
   </div>
   
-
-
-              <!-- <template>
-                <div class="Groceries">
-                  <h1>{{ message }}</h1>
-                  <br>
-                  <router-link v-bind:to="`/pantry`">See Pantry</router-link>
-
-                  <h1> new item: </h1>
-
-                  <div>
-                    Select Item Here: <input type="text" v-model="searchTerm" list="names"/>
-                    <button v-on:click="addItem()">Add item to Grocery List!</button>
-                    <datalist id="names">
-                      <option v-for="item in all_items">{{item.name}}</option>
-                    </datalist>
-                  </div>
-
-                  <hr>
-                  <div v-for="item in list">
-                    <br>
-                    <p> item_name: {{item.item_name}} </p>
-                    <p> used: {{item.used}} </p>
-                    <p> future_interest: {{item.future_interest}} </p>
-                    <button v-on:click="groceryItem(item)">Edit</button>
-                    <hr>
-                  </div>
-
-                  <dialog id="item-edit">
-                    <form method="dialog">
-                      <p> Name: {{currentItem.item_name}} </p>
-                      <button v-on:click="addToPantry(currentItem)">Got it! Add it to the Pantry!</button>
-                      <button>Close</button>
-                    </form>
-                  </dialog>
-
-                </div>
-              </template> -->
 </template>
 
 
@@ -155,6 +116,8 @@ export default {
         this.user_item = response.data ;
         this.searchTerm = "";
       }) ;
+      this.displayItems();
+      this.forceUpdate();
     },
 
     displayItems: function() {
@@ -168,6 +131,7 @@ export default {
         console.log("groceries: ", response) ;
         this.list = response.data ;
       });
+      
     },
 
     groceryItem: function(item) {
@@ -190,6 +154,7 @@ export default {
         this.currentItem = {};
         item = "";
       });
+
     },
   }
 };
